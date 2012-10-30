@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io"
 	"log"
 	"net"
 	"net/http"
@@ -38,7 +37,7 @@ func Loadbalancer(w http.ResponseWriter, req *http.Request) {
 	defer c.Close()
 
 	// Retrieve the redirect ip
-	redirect_ip, err := GetRedirectIP(c)
+	redirectIP, err := getRedirectIP(c)
 
 	if err != nil {
 		log.Print("Error: ", err)
@@ -46,18 +45,18 @@ func Loadbalancer(w http.ResponseWriter, req *http.Request) {
 
 	host, _, err := net.SplitHostPort(req.RemoteAddr)
 
-	country_code := ""
+	cc := ""
 	loc := gi.GetLocationByIP(host)
 
 	if loc != nil {
-		country_code = loc.CountryCode
+		cc = loc.CountryCode
 	}
 
 	// Populate the loadbalancer response struct
 	response := LoadbalancerResponse{
-		Redirect:    redirect_ip,
+		Redirect:    redirectIP,
 		Timestamp:   time.Now().Unix(),
-		CountryCode: country_code,
+		CountryCode: cc,
 		ClientIP:    host,
 	}
 
@@ -69,5 +68,5 @@ func Loadbalancer(w http.ResponseWriter, req *http.Request) {
 	}
 
 	// Return the JSON to the client
-	io.WriteString(w, string(json))
+	w.Write(json)
 }
