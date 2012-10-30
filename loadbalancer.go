@@ -67,6 +67,16 @@ func Loadbalancer(w http.ResponseWriter, req *http.Request) {
 		fmt.Println("JSON Error:", err)
 	}
 
-	// Return the JSON to the client
-	w.Write(json)
+	callback := req.FormValue("callback")
+
+	if callback == "" {
+		// Return the JSON to the client
+		w.Write(json)
+	} else {
+		w.Header().Set("Content-Type", "application/javascript")
+		w.Write([]byte(callback))
+		w.Write([]byte("("))
+		w.Write(json)
+		w.Write([]byte(")"))
+	}
 }
