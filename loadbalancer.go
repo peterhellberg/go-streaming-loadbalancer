@@ -18,6 +18,8 @@ type LoadbalancerResponse struct {
 
 func Loadbalancer(w http.ResponseWriter, req *http.Request) {
 	// Set some headers
+	w.Header().Set("Connection", "close")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Server", "go-streaming-loadbalancer")
 
@@ -70,10 +72,14 @@ func Loadbalancer(w http.ResponseWriter, req *http.Request) {
 	callback := req.FormValue("callback")
 
 	if callback == "" {
+		w.Header().Set("Content-Length", fmt.Sprintf("%d", len(json)))
 		// Return the JSON to the client
 		w.Write(json)
 	} else {
+		contentLength := fmt.Sprintf("%d", len(json)+len(callback)+2)
+
 		w.Header().Set("Content-Type", "application/javascript")
+		w.Header().Set("Content-Length", contentLength)
 		w.Write([]byte(fmt.Sprintf("%s(%s)", callback, json)))
 	}
 }
