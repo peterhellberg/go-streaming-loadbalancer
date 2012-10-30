@@ -11,5 +11,5 @@ A small loadbalancer API written in [Go](http://golang.org/).
 ## Libraries used
  
  * [Pat](https://github.com/bmizerany/pat)
- * [Redigo/Redis](https://github.com/garyburd/redigo/redis)
+ * [Redigo](https://github.com/garyburd/redigo) (Redis)
  * [Go-GeoIP](https://github.com/carlhoerberg/go-geoip)
