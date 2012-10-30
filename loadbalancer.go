@@ -74,9 +74,6 @@ func Loadbalancer(w http.ResponseWriter, req *http.Request) {
 		w.Write(json)
 	} else {
 		w.Header().Set("Content-Type", "application/javascript")
-		w.Write([]byte(callback))
-		w.Write([]byte("("))
-		w.Write(json)
-		w.Write([]byte(")"))
+		w.Write([]byte(fmt.Sprintf("%s(%s)", callback, json)))
 	}
 }
