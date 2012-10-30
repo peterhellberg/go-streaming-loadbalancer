@@ -7,7 +7,7 @@ import (
 	"github.com/bmizerany/pat"
 )
 
-func start_server() {
+func startServer() {
 	endpoint := "/loadbalancer.json"
 
 	m := pat.New()

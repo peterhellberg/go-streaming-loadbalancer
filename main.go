@@ -2,17 +2,17 @@ package main
 
 func main() {
 	// Begin by parsing the command line arguments
-  parse_flags()
+  parseFlags()
 
   // Load the GeoIP.dat
-	load_geoip()
+	loadGeoip()
 
   // Create a connection pool for Redis
-	new_redis_pool()
+	createRedisPool()
 
   // Print the startup message
-	print_startup_message()
+	printStartupMessage()
 
   // Finally start the server
-	start_server()
+	startServer()
 }

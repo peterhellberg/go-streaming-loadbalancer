@@ -4,11 +4,11 @@ import "github.com/garyburd/redigo/redis"
 
 var pool *redis.Pool
 
-func new_redis_pool() {
+func createRedisPool() {
 	pool = &redis.Pool{
 		MaxIdle: 3,
 		Dial: func() (c redis.Conn, err error) {
-			c, err = redis.Dial("tcp", *redis_server)
+			c, err = redis.Dial("tcp", *redisServer)
 			if err != nil {
 				return nil, err
 			}
@@ -17,6 +17,6 @@ func new_redis_pool() {
 	}
 }
 
-func GetRedirectIP(c redis.Conn) (string, error) {
-	return redis.String(c.Do("GET", *redis_key))
+func getRedirectIP(c redis.Conn) (string, error) {
+	return redis.String(c.Do("GET", *redisKey))
 }

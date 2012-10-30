@@ -14,11 +14,11 @@ const (
 )
 
 var port = flag.Int("port", defaultPort, "The port number")
-var geoip_path = flag.String("geoip_path", defaultGeoIpPath, "Full path of the GeoIP.dat")
-var redis_server = flag.String("redis_server", defaultRedisServer, "The Redis server to use")
-var redis_key = flag.String("redis_key", defaultRedisKey, "The Redis key to use")
+var geoipPath = flag.String("geoip_path", defaultGeoIpPath, "Full path of the GeoIP.dat")
+var redisServer = flag.String("redis_server", defaultRedisServer, "The Redis server to use")
+var redisKey = flag.String("redis_key", defaultRedisKey, "The Redis key to use")
 
-func parse_flags() {
+func parseFlags() {
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "\nCommand line arguments:\n\n")
 		flag.PrintDefaults()

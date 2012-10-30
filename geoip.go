@@ -5,10 +5,10 @@ import "github.com/carlhoerberg/go-geoip"
 
 var gi *geoip.GeoIP
 
-func load_geoip() {
+func loadGeoip() {
 	var err error
 
-	gi, err = geoip.Load(*geoip_path)
+	gi, err = geoip.Load(*geoipPath)
 
 	if err != nil {
 		log.Fatal("Could not load GeoIP.dat: ", err.Error())
