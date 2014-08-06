@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// LoadbalancerResponse represents a response from the loadbalancer
 type LoadbalancerResponse struct {
 	Redirect    string `json:"redirect"`
 	ClientIP    string `json:"client_ip"`
@@ -16,6 +17,7 @@ type LoadbalancerResponse struct {
 	Timestamp   int64  `json:"timestamp"`
 }
 
+// Loadbalancer responds to a request to the loadbalancer
 func Loadbalancer(w http.ResponseWriter, req *http.Request) {
 	// Set some headers
 	w.Header().Set("Connection", "close")
