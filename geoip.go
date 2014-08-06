@@ -1,7 +1,10 @@
 package main
 
-import "log"
-import "github.com/carlhoerberg/go-geoip"
+import (
+	"log"
+
+	"github.com/carlhoerberg/go-geoip"
+)
 
 var gi *geoip.GeoIP
 
