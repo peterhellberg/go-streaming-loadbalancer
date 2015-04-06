@@ -1,6 +1,8 @@
 go-streaming-loadbalancer
 =========================
 
+## NOTE: This project is not actively developed
+
 A small loadbalancer API written in [Go](http://golang.org/).
 
 [![References](http://golang.org/doc/gopher/ref.png)](http://golang.org/ref/)
@@ -9,7 +11,7 @@ A small loadbalancer API written in [Go](http://golang.org/).
 [![Help](http://golang.org/doc/gopher/help.png)](http://golang.org/help/)
 
 ## Libraries used
- 
+
  * [Pat](https://github.com/bmizerany/pat)
  * [Redigo](https://github.com/garyburd/redigo) (Redis)
  * [Go-GeoIP](https://github.com/carlhoerberg/go-geoip)
